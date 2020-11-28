@@ -5,6 +5,7 @@ import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import java.util.List;
 
@@ -19,6 +20,9 @@ public interface MahasiswaDao {
 
     @Insert
     void insertAll(Mahasiswa... mahasiswa);
+
+    @Update
+    void update(Mahasiswa mahasiswa);
 
     @Delete
     public  void  deleteUsers(Mahasiswa... users);

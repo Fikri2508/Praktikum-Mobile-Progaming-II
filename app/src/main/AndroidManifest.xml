@@ -11,13 +11,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ListLearning">
-        <activity android:name="ActivityWithFragment.ActivityDanFragment"></activity>
+        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".Profile_Activity" />
+        <activity android:name=".login_Activity" />
+        <activity android:name="ActivityWithFragment.ActivityDanFragment" />
         <activity android:name="ActivityWithFragment.ActivityKirimDataIntent" />
         <activity android:name=".SharePreferencesActivity" />
         <activity android:name=".ViewRoomDataActivity" />
         <activity android:name=".RoomDataActivity" />
         <activity android:name=".AddRoomDataActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".Splash_Activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

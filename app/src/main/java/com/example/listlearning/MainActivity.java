@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
         Button btnToRoom =  findViewById(R.id.btnToRoomData);
         Button btn1 = findViewById(R.id.btn1);
         Button btn2 = findViewById(R.id.btn2);
+        Button btnLogin =  findViewById(R.id.btnLogin);
 
 
         btnToShared.setOnClickListener(new View.OnClickListener() {
@@ -51,6 +52,14 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), ActivityDanFragment.class);
                 startActivity(intent);
+            }
+        });
+
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, login_Activity.class);
+                startActivity(i);
             }
         });
 

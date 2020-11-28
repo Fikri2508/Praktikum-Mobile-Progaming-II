@@ -64,6 +64,15 @@
             android:background="#000000"
             android:text="Mengirim Data Via intent ke next Activity"
             android:textColor="#ffff" />
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="#000000"
+            android:text="Login"
+            android:textColor="#ffff"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
