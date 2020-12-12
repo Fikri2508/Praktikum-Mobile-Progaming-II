@@ -3,6 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.listlearning">
 
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+
     <application
         android:name=".MyApp"
         android:allowBackup="true"
@@ -14,12 +19,22 @@
         <activity android:name=".MainActivity"></activity>
         <activity android:name=".Profile_Activity" />
         <activity android:name=".login_Activity" />
-        <activity android:name="ActivityWithFragment.ActivityDanFragment" />
-        <activity android:name="ActivityWithFragment.ActivityKirimDataIntent" />
+        <activity android:name="com.example.listlearning.activitywithfragment.ActivityDanFragment" />
+        <activity android:name="com.example.listlearning.activitywithfragment.ActivityKirimDataIntent" />
         <activity android:name=".SharePreferencesActivity" />
         <activity android:name=".ViewRoomDataActivity" />
         <activity android:name=".RoomDataActivity" />
         <activity android:name=".AddRoomDataActivity" />
+        <provider
+            android:authorities="com.example.listlearning.FileProvider"
+            android:name="androidx.core.content.FileProvider"
+            android:enabled="true"
+            android:grantUriPermissions="true"
+            android:exported="false">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PARTS"
+                android:resource="@xml/xml_paths"/>
+        </provider>
         <activity android:name=".Splash_Activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

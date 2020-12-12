@@ -7,8 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import ActivityWithFragment.ActivityDanFragment;
-import ActivityWithFragment.ActivityKirimDataIntent;
+import com.example.listlearning.activitywithfragment.ActivityDanFragment;
+import com.example.listlearning.activitywithfragment.ActivityKirimDataIntent;
 
 public class MainActivity extends AppCompatActivity {
 
