@@ -26,14 +26,13 @@
         <activity android:name=".RoomDataActivity" />
         <activity android:name=".AddRoomDataActivity" />
         <provider
-            android:authorities="com.example.listlearning.FileProvider"
             android:name="androidx.core.content.FileProvider"
-            android:enabled="true"
+            android:authorities="${applicationId}.provider"
             android:grantUriPermissions="true"
             android:exported="false">
             <meta-data
-                android:name="android.support.FILE_PROVIDER_PARTS"
-                android:resource="@xml/xml_paths"/>
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/xml_paths" />
         </provider>
         <activity android:name=".Splash_Activity">
             <intent-filter>

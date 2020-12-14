@@ -4,10 +4,14 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
+import java.io.File;
 import java.util.List;
 
 public class RecycleViewAdapter extends  RecyclerView.Adapter<RecycleViewAdapter.MyViewHolder> {
@@ -15,11 +19,11 @@ public class RecycleViewAdapter extends  RecyclerView.Adapter<RecycleViewAdapter
     private Context mContext;
     private List<Mahasiswa> albumList;
     public class MyViewHolder extends RecyclerView.ViewHolder {
-
+    public ImageView imageView;
         TextView nama,nim,kejuruan,alamat;
         public MyViewHolder(View v) {
             super(v);
-
+            imageView = v.findViewById(R.id.image);
             nama = v.findViewById(R.id.tvNama);
             nim = v.findViewById(R.id.tvNim);
             kejuruan = v.findViewById(R.id.tvKejuruan);
@@ -48,6 +52,9 @@ public class RecycleViewAdapter extends  RecyclerView.Adapter<RecycleViewAdapter
         holder.nim.setText(album.getNim());
         holder.kejuruan.setText(album.getKejuruan());
         holder.alamat.setText(album.getAlamat());
+        Glide.with(mContext)
+                .load(new File(album.getGambar()))
+                .into(holder.imageView);
 
     }
 

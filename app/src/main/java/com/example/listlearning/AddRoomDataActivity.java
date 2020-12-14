@@ -9,6 +9,7 @@ import androidx.core.content.FileProvider;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -63,7 +64,10 @@ public class AddRoomDataActivity extends AppCompatActivity implements DialogImag
         etNim = findViewById(R.id.etNim);
         etKejuruan = findViewById(R.id.etKejuruan);
         etAlamat = findViewById(R.id.etAlamat);
+        addImage = findViewById(R.id.add_image);
+        imageView = findViewById(R.id.image);
         dao = MyApp.getInstance().getDataBase().userDao();
+
 
         if (getIntent() != null) {
             String id = getIntent().getStringExtra(TAG_DATA_INTENT);
@@ -106,7 +110,6 @@ public class AddRoomDataActivity extends AppCompatActivity implements DialogImag
         if (!etAlamat.getText().toString().isEmpty()&&!etKejuruan.getText().toString().isEmpty()&&
                 !etNama.getText().toString().isEmpty()&&!etNim.getText().toString().isEmpty()) {
 
-            mahasiswa = new Mahasiswa();
             mahasiswa.setAlamat(etAlamat.getText().toString());
             mahasiswa.setKejuruan(etKejuruan.getText().toString());
             mahasiswa.setNama(etNama.getText().toString());
@@ -137,7 +140,7 @@ public class AddRoomDataActivity extends AppCompatActivity implements DialogImag
         }
         else {
             ActivityCompat.requestPermissions(this,
-                    new String[]{Manifest.permission.CAMERA}, REQUEST_GALLERY);
+                    new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, REQUEST_GALLERY);
         }
 
     }
@@ -147,7 +150,7 @@ public class AddRoomDataActivity extends AppCompatActivity implements DialogImag
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == REQUEST_CAMERA) {
             openCamera();
-        } else if (requestCode == REQUEST_GALLERY) {
+        } else if (requestCode == REQUEST_CAMERA) {
             openGalery();
 
         }
@@ -169,7 +172,7 @@ public class AddRoomDataActivity extends AppCompatActivity implements DialogImag
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == PICK_GALLERY) {
+        if (resultCode == Activity.RESULT_OK) {
             String path;
             if (requestCode == PICK_GALLERY) {
                 path = getRealPathFromUri(data.getData());
@@ -189,6 +192,7 @@ public class AddRoomDataActivity extends AppCompatActivity implements DialogImag
             Uri imageUri = FileProvider.getUriForFile(this, BuildConfig.APPLICATION_ID + ".provider", fileImage);
             Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
             intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
+            startActivityForResult(intent, PICK_CAMERA);
         } catch (IOException e) {
             e.printStackTrace();
         }
